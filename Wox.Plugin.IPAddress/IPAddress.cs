@@ -1,35 +1,53 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Net;
 using System.Net.NetworkInformation;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using Flow.Launcher.Plugin;
 
 namespace Wox.Plugin.IPAddress
 {
-    public class Program : IPlugin
+    public class Program : IAsyncPlugin, IResultUpdated
     {
-        public void Init(PluginInitContext context) { }
-        public List<Result> Query(Query query)
-        {
-            List<Result> results = new List<Result>();
+        internal PluginInitContext Context { get; private set; }
+        public const string icon = "ipaddress.png";
 
-            String hostname = Dns.GetHostName();
+        public event ResultUpdatedEventHandler ResultsUpdated;
+
+        public Task InitAsync(PluginInitContext context)
+        {
+            Context = context;
+            return Task.CompletedTask;
+        }
+
+        public async Task<List<Result>> QueryAsync(Query query, CancellationToken token)
+        {
+            var results = new List<Result>();
+
+            var hostname = Dns.GetHostName();
 
             // Get the Local IP Address
-            String IP = Dns.GetHostByName(hostname).AddressList[0].ToString();
+            var ip = (await Dns.GetHostEntryAsync(hostname)).AddressList[0].ToString();
 
+            results.Add(Result(ip, "Local IP Address ", icon, Action(ip)));
+            ResultsUpdated?.Invoke(this, new ResultUpdatedEventArgs
+            {
+                Query = query,
+                Results = results
+            });
+            
             // Get the External IP Address
-            String externalip = new WebClient().DownloadString("http://ipecho.net/plain");
+            var externalIp = await Context.API.HttpGetStringAsync("http://ipecho.net/plain", token);
 
-            String icon = "ipaddress.png";
 
-            results.Add(Result(IP, "Local IP Address ", icon, Action(IP)));
-            results.Add(Result(externalip, "External IP Address ", icon, Action(externalip)));
+            results.Add(Result(externalIp, "External IP Address ", icon, Action(externalIp)));
 
             return results;
         }
+
         // relative path to your plugin directory
         private static Result Result(String title, String subtitle, String icon, Func<ActionContext, bool> action)
         {
@@ -49,14 +67,14 @@ namespace Wox.Plugin.IPAddress
             {
                 CopyToClipboard(text);
 
-                // return false to tell Wox don't hide query window, otherwise Wox will hide it automatically
+                // return false to tell Flow don't hide query window, otherwise Wox will hide it automatically
                 return false;
             };
         }
 
         public static void CopyToClipboard(String text)
         {
-            Clipboard.SetText(text);
+            Clipboard.SetDataObject(text);
         }
     }
 }
