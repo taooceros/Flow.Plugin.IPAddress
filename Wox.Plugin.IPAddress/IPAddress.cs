@@ -45,7 +45,7 @@ namespace Flow.Plugin.IPAddress
             });
             
             // Get the External IP Address
-            var externalIp = await Context.API.HttpGetStringAsync("https://api.ip.sb/ip", token);
+            var externalIp = (await Context.API.HttpGetStringAsync("https://api.ip.sb/ip", token)).Trim();
 
 
             results.Add(Result(externalIp, "External IP Address ", icon, Action(externalIp)));
