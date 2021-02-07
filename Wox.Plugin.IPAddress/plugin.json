@@ -7,6 +7,6 @@
     "Version":"1.0.0",
     "Language":"csharp",
     "Website":"http://www.github.com/ishu3101/Wox.Plugin.IPAddress",
-    "ExecuteFileName":"Wox.Plugin.IPAddress.dll",
+    "ExecuteFileName":"Flow.Plugin.IPAddress.dll",
     "IcoPath": "ipaddress.png"
 }

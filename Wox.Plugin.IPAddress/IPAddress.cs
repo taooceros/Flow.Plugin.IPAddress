@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Flow.Launcher.Plugin;
 
-namespace Wox.Plugin.IPAddress
+namespace Flow.Plugin.IPAddress
 {
     public class Program : IAsyncPlugin, IResultUpdated
     {
@@ -30,9 +30,14 @@ namespace Wox.Plugin.IPAddress
             var hostname = Dns.GetHostName();
 
             // Get the Local IP Address
-            var ip = (await Dns.GetHostEntryAsync(hostname)).AddressList[0].ToString();
 
-            results.Add(Result(ip, "Local IP Address ", icon, Action(ip)));
+            foreach (var ipAddress in (await Dns.GetHostEntryAsync(hostname)).AddressList)
+            {
+                var ip = ipAddress.ToString();
+                results.Add(Result(ip, "Local IP Address ", icon, Action(ip)));
+
+            }
+
             ResultsUpdated?.Invoke(this, new ResultUpdatedEventArgs
             {
                 Query = query,
@@ -40,7 +45,7 @@ namespace Wox.Plugin.IPAddress
             });
             
             // Get the External IP Address
-            var externalIp = await Context.API.HttpGetStringAsync("http://ipecho.net/plain", token);
+            var externalIp = await Context.API.HttpGetStringAsync("https://api.ip.sb/ip", token);
 
 
             results.Add(Result(externalIp, "External IP Address ", icon, Action(externalIp)));
