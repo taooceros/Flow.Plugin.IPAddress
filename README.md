@@ -1,5 +1,5 @@
-# Wox.Plugin.IPAddress
-[Wox.Plugin.IPAddress](http://www.getwox.com/plugin/43) is a Flow Plugin that shows your internal and external IP address
+# Flow.Plugin.IPAddress
+[Flow.Plugin.IPAddress](http://www.getwox.com/plugin/43) is a Flow Plugin that shows your internal and external IP address
 
 ![Screenshot](screenshot.png)
 
