@@ -3,6 +3,8 @@
 
 ![Screenshot](screenshot.png)
 
+This is a port for Flow Launcher, and it doesn't work for Wox.
+
 ## Usage
 
 Enter the keyword `ipadr`. Select from the result to copy to the Clipboard.
