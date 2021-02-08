@@ -1,9 +1,9 @@
 # Wox.Plugin.IPAddress
-[Wox.Plugin.IPAddress](http://www.getwox.com/plugin/43) is a Wox Plugin that shows your internal and external IP address
+[Wox.Plugin.IPAddress](http://www.getwox.com/plugin/43) is a Flow Plugin that shows your internal and external IP address
 
 ![Screenshot](screenshot.png)
 
-This is a port for **Flow Launcher**, and it doesn't work for Wox.
+This is a port for **Flow Launcher**, and it doesn't work for Wox. (originally from @ishu3101)
 
 ## Usage
 
