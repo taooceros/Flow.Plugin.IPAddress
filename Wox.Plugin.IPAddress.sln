@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30914.41
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wox.Plugin.IPAddress", "Wox.Plugin.IPAddress\Wox.Plugin.IPAddress.csproj", "{CB033971-3534-488D-86AA-FC0F05456908}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wox.Plugin.IPAddress", "Wox.Plugin.IPAddress.csproj", "{CB033971-3534-488D-86AA-FC0F05456908}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {034FB763-F81C-4A0A-A02F-D6F6C96B2D89}
 	EndGlobalSection
 EndGlobal
