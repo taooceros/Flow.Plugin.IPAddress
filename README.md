@@ -3,7 +3,7 @@
 
 ![Screenshot](screenshot.png)
 
-This is a port for Flow Launcher, and it doesn't work for Wox.
+This is a port for **Flow Launcher**, and it doesn't work for Wox.
 
 ## Usage
 
