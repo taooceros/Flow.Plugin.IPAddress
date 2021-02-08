@@ -3,7 +3,7 @@
 
 ![Screenshot](screenshot.png)
 
-This is a port for **Flow Launcher** from (Wox.Plugin.IPAddress)[https://github.com/ishu3101/Wox.Plugin.IPAddress], and it doesn't work for Wox. (originally from @ishu3101)
+This is a port for **Flow Launcher** from (https://github.com/ishu3101/Wox.Plugin.IPAddress)[Wox.Plugin.IPAddress], and it doesn't work for Wox. (originally from @ishu3101)
 
 ## Usage
 
