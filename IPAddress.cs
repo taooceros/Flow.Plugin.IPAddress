@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Net;
-using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Flow.Launcher.Plugin;
+using System.Linq;
 
 namespace Flow.Plugin.IPAddress
 {
@@ -31,7 +30,7 @@ namespace Flow.Plugin.IPAddress
 
             // Get the Local IP Address
 
-            foreach (var ipAddress in (await Dns.GetHostEntryAsync(hostname)).AddressList)
+            foreach (var ipAddress in (await Dns.GetHostEntryAsync(hostname)).AddressList.OrderBy(ip => ip.AddressFamily))
             {
                 var ip = ipAddress.ToString();
                 results.Add(Result(ip, "Local IP Address ", icon, Action(ip)));
@@ -43,12 +42,12 @@ namespace Flow.Plugin.IPAddress
                 Query = query,
                 Results = results
             });
-            
+
             // Get the External IP Address
             var externalIp = (await Context.API.HttpGetStringAsync("https://api.ip.sb/ip", token)).Trim();
 
 
-            results.Add(Result(externalIp, "External IP Address ", icon, Action(externalIp)));
+            results.Insert(0, Result(externalIp, "External IP Address ", icon, Action(externalIp)));
 
             return results;
         }
