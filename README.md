@@ -12,5 +12,5 @@ Enter the keyword `ipadr`. Select from the result to copy to the Clipboard.
 ## Install
 
 ```bash
-wpm install IP Address
+pm install IP Address
 ```

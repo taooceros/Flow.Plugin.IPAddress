@@ -4,7 +4,7 @@
     "Name":"IP Address",
     "Description":"Shows your internal and external IP address",
     "Author":"ishu3101",
-    "Version":"1.2.0",
+    "Version":"1.2.1",
     "Language":"csharp",
     "Website":"http://www.github.com/ishu3101/Wox.Plugin.IPAddress",
     "ExecuteFileName":"Flow.Plugin.IPAddress.dll",
