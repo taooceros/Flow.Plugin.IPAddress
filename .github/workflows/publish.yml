@@ -26,6 +26,7 @@ jobs:
       - name: Build
         run: |
           dotnet publish 'Flow.Plugin.IPAddress.csproj' --framework netcoreapp3.1  -c Release -o "Flow.Plugin.IPAddress"
+          dir "Flow.Plugin.IPAddress"
           7z a -tzip "Flow.Plugin.IPAddress.zip" "Flow.Plugin.IPAddress\*"
           rm -r "Flow.Plugin.IPAddress"
       - name: Publish
